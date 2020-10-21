@@ -57,26 +57,26 @@ public class ElectronicsServlet extends HttpServlet {
     private void addToCard(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer electronicId = Integer.parseInt(request.getParameter("electronicId"));
         HttpSession httpSession = request.getSession();
-        if(httpSession.getAttribute("cart") == null) {
-            httpSession.setAttribute("cart" , new HashMap<String, Integer>());
+        if(httpSession.getAttribute("cartt") == null) {
+            httpSession.setAttribute("cartt" , new HashMap<String, Integer>());
         }
-        Map<String,Integer> cart = (Map<String, Integer>) httpSession.getAttribute("cart");
-        if(cart.containsKey(electronics.get(electronicId))) {
-            cart.put(electronics.get(electronicId), cart.get(electronics.get(electronicId)) + 1);
+        Map<String,Integer> cartt = (Map<String, Integer>) httpSession.getAttribute("cartt");
+        if(cartt.containsKey(electronics.get(electronicId))) {
+            cartt.put(electronics.get(electronicId), cartt.get(electronics.get(electronicId)) + 1);
         }
         else {
-            cart.put(electronics.get(electronicId), 1);
+            cartt.put(electronics.get(electronicId), 1);
             response.sendRedirect("ElectronicsServlet?action=viewCart");
         }
     }
     @SuppressWarnings("unchecked")
     private void viewCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Map<String, Integer> cart = (Map<String, Integer>) request.getSession().getAttribute("cart");
-        request.setAttribute("cart", cart);
+        Map<String, Integer> cartt = (Map<String, Integer>) request.getSession().getAttribute("cartt");
+        request.setAttribute("cartt", cartt);
         request.getRequestDispatcher("viewCart.jsp").forward(request,response);
     }
     private void empty(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        request.getSession().removeAttribute("cart");
+        request.getSession().removeAttribute("cartt");
         browse(request, response);
     }
     private void browse(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

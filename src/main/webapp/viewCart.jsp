@@ -13,8 +13,8 @@
 </head>
 <body>
 <h1>You have these items in your cart:</h1>
-<c:forEach items="${requestScope.cart}" var="cartItem">
-    ${cartItem.key}  - ${cartItem.value}
+<c:forEach items="${requestScope.cartt}" var="carttItem">
+    ${carttItem.key}  - ${carttItem.value}
     <br/>
 </c:forEach>
 <a href="<c:url value="/ElectronicsServlet"><c:param name="action" value="browse" /></c:url>">Back to Main</a>

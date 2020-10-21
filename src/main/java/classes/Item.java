@@ -6,9 +6,10 @@ public class Item implements Product {
     private int price;
     private String item_name;
     private Football football = new Football();
-    public Item(int id, int quantity) {
-        this.id = id;
+
+    public Item(Football football, int quantity) {
         this.quantity = quantity;
+        this.football = football;
     }
 
     public int getId() {
@@ -38,11 +39,6 @@ public class Item implements Product {
     public Item() {
     }
 
-    public Item(int id, int quantity, Football football) {
-        this.id = id;
-        this.quantity = quantity;
-        this.football = football;
-    }
 
     public int getPrice() {
         return price;
@@ -60,13 +56,6 @@ public class Item implements Product {
         this.item_name = item_name;
     }
 
-    public Item(int id, int quantity, int price, String item_name) {
-        this.id = id;
-        this.quantity = quantity;
-        this.price = price;
-        this.item_name = item_name;
-
-    }
 
     @Override
     public void getTotalPrice() {

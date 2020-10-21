@@ -784,7 +784,7 @@ false Z
 false Zulu
 true posixrules
 </TimeZones>
-      <StartupTime>1602127546</StartupTime>
+      <StartupTime>1602792820</StartupTime>
     </root>
     <database id="2" parent="1" name="Healthcare">
       <ObjectId>16822</ObjectId>
@@ -870,7 +870,7 @@ true posixrules
     <database id="22" parent="1" name="sportshop">
       <ObjectId>19355</ObjectId>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>1323</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1328</IntrospectionStateNumber>
       <Current>1</Current>
     </database>
     <database id="23" parent="1" name="users">
@@ -933,7 +933,6 @@ true posixrules
       <Comment>standard public schema</Comment>
       <StateNumber>360</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>1324</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <access-method id="37" parent="22" name="btree">
@@ -996,49 +995,5 @@ true posixrules
     <language id="45" parent="22" name="internal"/>
     <language id="46" parent="22" name="plpgsql"/>
     <language id="47" parent="22" name="sql"/>
-    <table id="48" parent="36" name="users">
-      <ObjectId>19356</ObjectId>
-      <Owner>postgres</Owner>
-      <StateNumber>1321</StateNumber>
-    </table>
-    <column id="49" parent="48" name="user_id">
-      <Position>1</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>1321</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="50" parent="48" name="username">
-      <Position>2</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <StateNumber>1321</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="51" parent="48" name="email">
-      <Position>3</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <StateNumber>1321</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="52" parent="48" name="user_password">
-      <Position>4</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <StateNumber>1321</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <index id="53" parent="48" name="users_pkey">
-      <ObjectId>19359</ObjectId>
-      <StateNumber>1321</StateNumber>
-      <ColNames>user_id</ColNames>
-      <Unique>1</Unique>
-      <Primary>1</Primary>
-    </index>
-    <key id="54" parent="48" name="users_pkey">
-      <ObjectId>19360</ObjectId>
-      <StateNumber>1321</StateNumber>
-      <ColNames>user_id</ColNames>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
-    </key>
   </database-model>
 </dataSource>

@@ -25,9 +25,9 @@
     <c:forEach items="${sessionScope.cart}" var="p">
         <tr>
             <td align="center">DELETE</td>
-            <td>${p.id}</td>
-            <td>${p.item_name}</td>
-            <td>${p.price}}</td>
+            <td>${p.football.id}</td>
+            <td>${p.football.item_name}</td>
+            <td>${p.football.price}</td>
             <td>${p.quantity}</td>
             <td>${p.quantity*p.football.price}</td>
         </tr>

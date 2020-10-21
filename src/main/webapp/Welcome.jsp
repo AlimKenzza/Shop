@@ -3,25 +3,7 @@
 <%@ page import="java.sql.DriverManager" %>
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.util.Set" %>
-<%@ page import="java.util.HashSet" %>
-<%@ page import="java.util.Iterator" %>
-<% final String JDBC_DRIVER = "org.postgresql.Driver";
- final String DATABASE_URL = "jdbc:postgresql://localhost:5432/sportshop";
- final String DATABASE_USER = "postgres";
- final String DATABASE_PASSWORD = "alimzhan125";
-final String GET_ALL_FOOTBALL_RECORDS = "SELECT * FROM football";
-
-        try {
-            Class.forName(JDBC_DRIVER);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
-//        statement.executeQuery(GET_ALL_FOOTBALL_RECORDS)
-%>
+<%@ page import="java.util.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"   %>
 <html>
@@ -132,40 +114,23 @@ final String GET_ALL_FOOTBALL_RECORDS = "SELECT * FROM football";
         <th>Price</th>
         <th>Add to cart</th>
     </tr>
-    <%
-try{
-     connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USER, DATABASE_PASSWORD);
-
-             statement = connection.createStatement();
-
-             resultSet = statement.executeQuery(GET_ALL_FOOTBALL_RECORDS);
-    while(resultSet.next()){
-
-        %>
-    <tr>
-
-        <% Football football = new Football(); %>
-        <% String item_name = football.getItem_name();
-        int price = football.getPrice();
-            request.setAttribute("item_name", item_name);
-            request.setAttribute("price", price);
-        %>
-        <td><%football.setId(resultSet.getInt(1));%> <%= football.getId()%></td>
-        <td><%football.setItem_name(resultSet.getString(2)); %> <%=football.getItem_name()%></td>
-        <td><%football.setPrice(resultSet.getInt(3)); %><%=football.getPrice()%></td>
-        <td align="center"><a href="ShoppingCartServlet?id=<%=football.getId()%>&action=ordernow">OrderNow</a></td>
-<%--        <a href="ShoppingCartServlet?id=${}&action=ordernow"></a>--%>
-    </tr>
-    <%
-            }
-            connection.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    %>
-</table>
+<%--    take data from getAllFootballs function--%>
+<% Football football = new Football();
+ArrayList<Football> list = football.getAllFootballs();
+ request.setAttribute("products", list);
+%>
+<%--    user jstl foreach in order to show them--%>
+    <c:forEach items="${products}" var="list">
+        <tr>
+            <td><c:out value="${list.id}"></c:out></td>
+            <td><c:out value="${list.item_name}"></c:out></td>
+            <td><c:out value="${list.price} "></c:out></td>
+            <td align="center"><a href="ShoppingCartServlet?id=<c:out value="${list.id}"/>&action=ordernow">OrderNow</a></td>
+        </tr>
+    </c:forEach></table>
 <hr>
 <h1>Please enter your personal information here</h1>
+<%--form to set cookies --%>
 <form action="cookie.jsp" method="get">
     Email: <input type="email" name="email">
     PhoneNumber: <input type="text" name="phone">
@@ -175,7 +140,7 @@ try{
 <hr>
 
 <h1>List of Cities where you can find us</h1>
-
+<%--use jstl foreach in order to access all cities and show them--%>
 <c:forEach items="${states}" var="cities">
     ${cities} <br/>
 
